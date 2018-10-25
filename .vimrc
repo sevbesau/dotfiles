@@ -21,6 +21,9 @@ set wildmode=list:longest
 set tabstop=4
 set autoindent
 
+" turn off the terminal bell
+set visualbell
+
 " use system clipboard
 set clipboard+=unnamed
 
