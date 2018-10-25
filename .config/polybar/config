@@ -1,0 +1,264 @@
+;
+;###---custom polybar---###
+;
+
+
+[colors]
+background = #00000000
+foreground = #ffffffff
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+dim-value = 0.0
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[bar/custom]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 30
+offset-x = 0
+offset-y = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = Hack:pixelsize=14;3
+font-1 = Material Icons:pixelsize=15;3
+
+
+;The modules that wil be displayed
+modules-left = i3 updates-arch popup-brightness popup-volume
+modules-center = clock 
+modules-right =  volume wlan battery temperature date
+
+tray-position = right
+tray-padding = 3
+;tray-transparent = true
+;tray-background = #0063ff
+
+
+
+
+;shows the focussed window
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused = %index%
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+label-urgent = %index%!
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+ws-icon-0 = 1; 
+ws-icon-1 = 2;♛
+ws-icon-2 = 3;♜
+ws-icon-3 = 4;♝
+ws-icon-4 = 5;♞
+ws-icon-default = ♟
+
+
+[module/updates-arch]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-arch
+interval = 600
+
+
+[module/popup-brightness]
+type = custom/script
+exec = ~/.config/polybar/scripts/popup-brightness
+interval = 0.4
+
+
+[module/popup-volume]
+type = custom/script
+exec = ~/.config/polybar/scripts/popup-volume 2>/dev/null
+interval = 0.4
+
+
+[module/mpd]
+type = internal/mpd
+
+format-online = <label-song>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+icon-prev = 
+icon-seekb = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+icon-seekf = 
+
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground = ${colors.primary}
+toggle-off-foreground = #66
+
+
+[module/backlight-acpi]
+type = internal/backlight
+card = intel_backlight
+
+format = <label> <bar>
+label = 
+
+bar-width = 11
+bar-indicator = . 
+bar-fill = ─
+bar-empty = ─
+
+
+[module/wlan]
+type = internal/network
+interface = wlp5s0
+interval = 3.0
+
+format-disconnected = <label-disconnected>
+format-connected = <label-connected>
+
+label-connected =  
+label-disconnected = 
+
+
+[module/clock]
+type = internal/date
+
+interval = 5
+time = %H:%M
+label = %time% 
+
+
+[module/date]
+type = internal/date
+
+interval = 5
+date = %d/%m
+label = %date% 
+
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> 
+;<bar-volume>
+format-muted = <label-muted> 
+
+label-volume =  
+label-muted = 
+
+bar-volume-width = 11
+bar-volume-indicator = ┼
+bar-volume-fill = ─
+bar-volume-empty = ─
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 99
+poll-interval = 5
+
+time-format = %H:%M
+label-discharging =  %percentage%% 
+label-charging =  %percentage%%
+label-full =  
+
+format-charging = <label-charging>
+format-discharging = <label-discharging>  
+format-full = <label-full>
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <label>
+format-warn = <label-warn>
+
+label = %temperature%  
+label-font = 0
+label-warn = %temperature%
+
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close = 
+label-close-foreground = ${colors.secondary}
+label-separator = |
+
+menu-0-0 = 
+menu-0-0-foreground = ${colors.secondary}
+menu-0-0-exec = menu-open-1
+menu-0-1 = 
+menu-0-1-foreground = ${colors.secondary}
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = 
+menu-1-0-foreground = ${colors.secondary}
+menu-1-0-exec = reboot
+
+menu-2-0 = 
+menu-2-0-foreground 4 ${colors.secondary}
+menu-2-0-exec = shutdown -t now
