@@ -1,0 +1,16 @@
+#!/bin/bash
+
+pvolume=$( cat ./prev-volume )
+volume=$( amixer sget Master | grep -Eo '\[[0-9]{2,}%\]' | tr -d '[]%' )
+echo "$volume" > ./prev-volume
+if [ "$pvolume" != "$volume" ];
+then
+	fill=$(( $volume / 5 ))
+	empty=$(( 20 - $fill ))
+    FILL=$( awk 'BEGIN {while (c++<'$fill') printf "─"}' )
+	EMPTY=$( awk 'BEGIN {while (c++<'$empty') printf "─"}' )
+	echo ' '$FILL'┼'$EMPTY
+else
+	echo ""
+fi
+export pvolume='$volume'

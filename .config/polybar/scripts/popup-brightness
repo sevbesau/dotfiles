@@ -1,0 +1,16 @@
+#!/bin/bash
+
+pbrightness=$( cat ./prev-brightness )
+brightness=$( cat /sys/class/backlight/intel_backlight/brightness )
+echo "$brightness" > ./prev-brightness
+if [ "$pbrightness" != "$brightness" ];
+then
+    fill=$(( $brightness / 60 ))
+    empty=$(( 20 - $fill ))
+    FILL=$( awk 'BEGIN {while (c++<'$fill') printf "─"}' )
+    EMPTY=$( awk 'BEGIN {while (c++<'$empty') printf "─"}' )
+    echo ' '$FILL'┼'$EMPTY
+else
+    echo ""
+fi
+
