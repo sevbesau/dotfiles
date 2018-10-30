@@ -22,22 +22,24 @@ height = 30
 offset-x = 0
 offset-y = 0
 
+enable-ipc = true
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-padding-left = 0
-padding-right = 2
+padding-left = 1
+padding-right = 1
 module-margin-left = 2
-module-margin-right = 2
+module-margin-right = 1
 
 font-0 = Hack:pixelsize=14;3
 font-1 = Material Icons:pixelsize=15;3
 
 
 ;The modules that wil be displayed
-modules-left = i3 updates-arch popup-brightness popup-volume
+modules-left = i3 updates-arch popup-brightness popup-volume 
 modules-center = clock 
-modules-right =  volume wlan battery temperature date
+modules-right = custombat volume wifi-toggle battery temperature date
 
 tray-position = right
 tray-padding = 3
@@ -115,16 +117,37 @@ exec = ~/.config/polybar/scripts/updates-arch
 interval = 600
 
 
+[module/custombat]
+type = custom/script
+exec = ~/.config/polybar/scripts/battery 2>/dev/null
+interval = 6
+
+
 [module/popup-brightness]
 type = custom/script
 exec = ~/.config/polybar/scripts/popup-brightness
 interval = 0.4
 
 
+; add mute functionality
 [module/popup-volume]
 type = custom/script
 exec = ~/.config/polybar/scripts/popup-volume 2>/dev/null
 interval = 0.4
+
+[module/wifi-toggle]
+type = custom/script
+exec = ~/.config/polybar/scripts/wifi-display
+interval = 1
+click-left = ~/.config/polybar/scripts/wifi-display -t
+click-right = nm-connection-editor %counter%
+
+
+[module/test]
+type = custom/script
+exec = ~/.config/polybar/scripts/test.sh
+tail = true
+click-left = kill -USR1 %pid%
 
 
 [module/mpd]
@@ -232,7 +255,7 @@ warn-temperature = 60
 format = <label>
 format-warn = <label-warn>
 
-label = %temperature%  
+label = %temperature%
 label-font = 0
 label-warn = %temperature%
 

@@ -32,4 +32,8 @@ alias Phttp='python3 -m http.server --cgi'
 # ps2 emu
 alias ps2='PCSX2'
 
+# alias for the dotfiles repo
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+# alias for wifi info
+alias wifi='nmcli -f in-use,ssid,bars dev wifi'

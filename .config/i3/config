@@ -12,7 +12,7 @@
 
 # gaps setup
 hide_edge_borders both
-gaps inner 5
+gaps inner 10
 gaps outer 0 
 
 # other defenitions
@@ -58,7 +58,7 @@ bindsym XF86MonBrightnessUp               exec bash $HOME/bin/brightness +
 bindsym XF86MonBrightnessDown             exec bash $HOME/bin/brightness -
 
 # take a screenshot
-bindsym Print							  exec "spectacle"
+bindsym XF86WakeUp 						  exec "spectacle" 
 
 # lock the screen
 bindsym $mod+x							  exec "lock.sh"
@@ -74,7 +74,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Shift+Return  				  exec xterm -fa 'Hack' -fs 14 
-bindsym $mod+Return                       exec i3-sensible-terminal
+bindsym $mod+Return                       exec i3-sensible-terminal && split h
 
 # kill focused window
 bindsym $mod+Shift+a 					  kill
@@ -198,7 +198,7 @@ exec_always "focussed-border"
 exec_always --no-startup-id dunst
 
 # Start polybar
-exec --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #start compton
 exec_always --no-startup-id  compton 
