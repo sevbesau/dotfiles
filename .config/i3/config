@@ -1,6 +1,10 @@
-# i3 config file (v1.5)
-
-
+#  _ _____                    __ _       
+# (_)___ /    ___ ___  _ __  / _(_) __ _ 
+# | | |_ \   / __/ _ \| '_ \| |_| |/ _` |
+# | |___) | | (_| (_) | | | |  _| | (_| |
+# |_|____/   \___\___/|_| |_|_| |_|\__, |
+#                                  |___/ 
+ 
 
 ###---To Do---###
 # organize music
@@ -12,7 +16,7 @@
 
 # gaps setup
 hide_edge_borders both
-gaps inner 10
+gaps inner 5
 gaps outer 0 
 
 # other defenitions
@@ -190,6 +194,9 @@ bindsym $mod+Shift+g gaps inner current set 0; gaps outer current set 0
 
 
 ###---Starting aplications ---###
+
+# start redshift
+exec redshift -l 51:03
 
 # give the focussed window a border
 exec_always "focussed-border"

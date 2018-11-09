@@ -1,7 +1,15 @@
-;
-;###---custom polybar---###
-;
-
+;                 _                  
+;   ___ _   _ ___| |_ ___  _ __ ___  
+;  / __| | | / __| __/ _ \| '_ ` _ \ 
+; | (__| |_| \__ \ || (_) | | | | | |
+;  \___|\__,_|___/\__\___/|_| |_| |_|
+;              _       _                
+;  _ __   ___ | |_   _| |__   __ _ _ __ 
+; | '_ \ / _ \| | | | | '_ \ / _` | '__|
+; | |_) | (_) | | |_| | |_) | (_| | |   
+; | .__/ \___/|_|\__, |_.__/ \__,_|_|   
+; |_|            |___/                  
+; 
 
 [colors]
 background = #00000000
@@ -34,12 +42,12 @@ module-margin-right = 1
 
 font-0 = Hack:pixelsize=14;3
 font-1 = Material Icons:pixelsize=15;3
-
+font-2 = Font Awesome 5 Free:pixelsize=15;3
 
 ;The modules that wil be displayed
 modules-left = i3 updates-arch popup-brightness popup-volume 
 modules-center = clock 
-modules-right = custombat volume wifi-toggle battery temperature date
+modules-right = message volume wifi-toggle battery temperature date
 
 tray-position = right
 tray-padding = 3
@@ -120,7 +128,7 @@ interval = 600
 [module/custombat]
 type = custom/script
 exec = ~/.config/polybar/scripts/battery 2>/dev/null
-interval = 6
+interval = 1
 
 
 [module/popup-brightness]
@@ -129,10 +137,16 @@ exec = ~/.config/polybar/scripts/popup-brightness
 interval = 0.4
 
 
+[module/message]
+type = custom/script
+exec = echo 'gtd'
+interval = 10000 
+
+
 ; add mute functionality
 [module/popup-volume]
 type = custom/script
-exec = ~/.config/polybar/scripts/popup-volume 2>/dev/null
+exec = source  ~/.bash_profile; ~/.config/polybar/scripts/popup-volume1 2>/dev/null
 interval = 0.4
 
 [module/wifi-toggle]
@@ -238,7 +252,7 @@ full-at = 99
 poll-interval = 5
 
 time-format = %H:%M
-label-discharging =  %percentage%% 
+label-discharging =  %percentage%%
 label-charging =  %percentage%%
 label-full =  
 
@@ -255,8 +269,8 @@ warn-temperature = 60
 format = <label>
 format-warn = <label-warn>
 
-label = %temperature%
-label-font = 0
+label = %temperature% 
+label-font = 1
 label-warn = %temperature%
 
 

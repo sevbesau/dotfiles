@@ -1,6 +1,11 @@
-"
-" vimrc by seppe van besauw
-"
+" 
+" __   _(_)_ __ ___  _ __ ___ 
+" \ \ / / | '_ ` _ \| '__/ __|
+"  \ V /| | | | | | | | | (__ 
+"   \_/ |_|_| |_| |_|_|  \___|
+"                             
+
+
 
 " pathogen (vim plugin manager)
 execute pathogen#infect()
@@ -61,6 +66,16 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+
+
+" use the command editor
+nnoremap : q:i
+nnoremap / q/i
+nnoremap ? q?i
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>

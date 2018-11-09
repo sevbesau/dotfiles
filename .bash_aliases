@@ -1,4 +1,10 @@
-# this file houses all of the bash aliasses
+#  _               _             _ _                     
+# | |__   __ _ ___| |__     __ _| (_) __ _ ___  ___  ___ 
+# | '_ \ / _` / __| '_ \   / _` | | |/ _` / __|/ _ \/ __|
+# | |_) | (_| \__ \ | | | | (_| | | | (_| \__ \  __/\__ \
+# |_.__/ \__,_|___/_| |_|  \__,_|_|_|\__,_|___/\___||___/
+#                                                        
+
 
 # alias for getting the cpu temp
 alias temp='cat /sys/class/thermal/thermal_zone0/temp'
@@ -14,14 +20,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias lsss='ll -a --color | less -R'
-
-# network stuff
-alias Connect='nmcli --ask con up'
-alias Disconnect='nmcli --ask con down'
-alias Nmanager='nm-connection-editor'
-
-# make mounting easyer
-alias Mount='sudo mount -o gid=users,fmask=113,dmask=002'
 
 # open an imagevieuwer
 alias image='sxiv-rifle ./'

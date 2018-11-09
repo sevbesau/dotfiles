@@ -1,7 +1,10 @@
-#
-# arch bashrc by sepseel
-# ~/.bashrc
-#
+#  _               _              
+# | |__   __ _ ___| |__  _ __ ___ 
+# | '_ \ / _` / __| '_ \| '__/ __|
+# | |_) | (_| \__ \ | | | | | (__ 
+# |_.__/ \__,_|___/_| |_|_|  \___|
+#                                 
+
 
 # If not running interactively, don't do anything
 case $- in
@@ -16,8 +19,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE= HISFILESIZE= # infinite history
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -107,7 +109,7 @@ fi
 # disable freezing by ctr+s
 stty -ixon
 
-
+shopt -s autocd 			# cd without cd
 
 export PATH=$PATH":/usr/share/java"
 export PATH=$PATH":$HOME/Documents/Java/processing/processing-3.3.7"
