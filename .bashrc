@@ -12,14 +12,10 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE= HISFILESIZE= # infinite history
+# history settings
+HISTCONTROL=ignoreboth		# no duplicate lines in the history
+shopt -s histappend			# append, dont overwrite history
+HISTSIZE= HISFILESIZE= 		# infinite history
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -31,16 +27,6 @@ shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
 
 #sets color prompt
 force_color_prompt=yes
@@ -84,11 +70,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-
-
 # Alias definitions in a separate file.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -101,7 +82,6 @@ if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-#echo $newbrightness > $handler"/brightness"
     . /etc/bash_completion
   fi
 fi
@@ -109,8 +89,10 @@ fi
 # disable freezing by ctr+s
 stty -ixon
 
-shopt -s autocd 			# cd without cd
+# change directory by just typing the path without 'cd'
+shopt -s autocd
 
+# expanding the path
 export PATH=$PATH":/usr/share/java"
 export PATH=$PATH":$HOME/Documents/Java/processing/processing-3.3.7"
 export PATH=$PATH":$HOME/bin"
