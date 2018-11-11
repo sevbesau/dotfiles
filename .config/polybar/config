@@ -11,6 +11,8 @@
 ; |_|            |___/                  
 ; 
 
+; vim:ft=dosini
+
 [colors]
 background = #00000000
 foreground = #ffffffff
@@ -139,11 +141,10 @@ interval = 0.4
 
 [module/message]
 type = custom/script
-exec = echo 'gtd'
+exec = #echo 'gtd'
 interval = 10000 
 
 
-; add mute functionality
 [module/popup-volume]
 type = custom/script
 exec = source  ~/.bash_profile; ~/.config/polybar/scripts/popup-volume1 2>/dev/null

@@ -28,6 +28,9 @@ shopt -s globstar
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# vi mode in bash
+set -o vi
+
 #sets color prompt
 force_color_prompt=yes
 

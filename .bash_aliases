@@ -12,14 +12,12 @@ alias temp='cat /sys/class/thermal/thermal_zone0/temp'
 # alias for reloading .bashrc
 alias reload='source ~/.bashrc'
 
-# alias for the brightness script
+# alias for the backlight script
 alias backlight='./.config/Scripts/backlight.sh'
 
 # more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
-alias lsss='ll -a --color | less -R'
 
 # open an imagevieuwer
 alias image='sxiv-rifle ./'
