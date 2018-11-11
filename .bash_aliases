@@ -6,6 +6,9 @@
 #                                                        
 
 
+# toggle the touchpad on and off
+alias touchpadtoggle="synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')"
+
 # alias for getting the cpu temp
 alias temp='cat /sys/class/thermal/thermal_zone0/temp'
 
