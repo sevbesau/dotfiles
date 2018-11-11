@@ -147,7 +147,7 @@ interval = 10000
 
 [module/popup-volume]
 type = custom/script
-exec = source  ~/.bash_profile; ~/.config/polybar/scripts/popup-volume1 2>/dev/null
+exec = source  ~/.bash_profile; ~/.config/polybar/scripts/popup-volume 2>/dev/null
 interval = 0.4
 
 [module/wifi-toggle]

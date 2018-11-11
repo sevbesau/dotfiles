@@ -66,6 +66,8 @@ bindsym $mod+w							  exec "touchpadtoggle"
 # firefox
 bindsym $mod+Shift+f 					  exec --no-startup-id "firefox"
 
+# open an emoji menu
+bindsym $mod+a							  exec "dmenuunicode"
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 

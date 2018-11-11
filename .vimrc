@@ -23,7 +23,7 @@ set wildmenu
 set wildmode=list:longest
 
 " tabsettings
-set tabstop=4
+set tabstop=2
 set autoindent
 
 " turn off the terminal bell
@@ -46,18 +46,6 @@ let g:lightline = {
 
 
 "
-" automaticly close parens
-"
-
-inoremap (		()<Left>
-inoremap {		{}<Left>
-inoremap [		[]<Left>
-inoremap '		''<Left>
-inoremap "		""<Left>
-
-
-
-"
 " Keybindings
 "
 
@@ -71,6 +59,9 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 
+
+" make copying easyer
+nnoremap <C-c> "+y
 
 " use the command editor
 nnoremap : q:i
