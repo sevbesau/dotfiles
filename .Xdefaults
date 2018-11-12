@@ -28,7 +28,7 @@ URxvt.color14:        #9AEDFE
 URxvt.color15:        #E6E6E6
 URxvt.intensityStyles:	true
 URxvt.depth:		32
-URxvt.font: 		xft:Hack:size=14, xft:Material Icons:size=14
+URxvt.font: 		xft:Hack:size=14, xft:Material Icons:size=14, xft:Symbola:size=14, xft:Font Awesome:size=14, xft:Fira Code:size=14
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 
