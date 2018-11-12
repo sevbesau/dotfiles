@@ -7,5 +7,6 @@
 
 checkBat &
 xrdb ~/.Xdefaults
+setxkbmap -option caps:escape
 exec i3
 
