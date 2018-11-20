@@ -70,6 +70,4 @@ stty -ixon
 shopt -s autocd
 
 # expanding the path
-export PATH=$PATH":/usr/share/java"
-export PATH=$PATH":$HOME/Documents/Java/processing/processing-3.3.7"
-export PATH=$PATH":$HOME/bin"
+export PATH=$PATH":$HOME/Documents/Java/processing/processing-3.3.7:$HOME/bin:/usr/share/java"

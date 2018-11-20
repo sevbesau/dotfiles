@@ -36,3 +36,6 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # alias for wifi info
 alias wifi='nmcli -f in-use,ssid,bars dev wifi'
+
+# alias for alsa eq
+alias alsaequal='alsamixer -D equal'

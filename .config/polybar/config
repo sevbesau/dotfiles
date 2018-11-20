@@ -125,6 +125,7 @@ ws-icon-default = ♟
 type = custom/script
 exec = ~/.config/polybar/scripts/updates-arch
 interval = 600
+click-left = ~/.config/polybar/scripts/updates-arch
 
 
 [module/custombat]
