@@ -1,5 +1,7 @@
 # Dotfiles repo
 
+voor de oef, hihi
+
 ### Here you can find my configuration files for:
 - bash
 - vim
