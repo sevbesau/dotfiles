@@ -1,0 +1,51 @@
+#!/usr/bin/env sh
+
+# constants
+DOTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DEST=$HOME
+
+# silent pushd
+pushd() { builtin pushd $1 > /dev/null; }
+popd() { builtin popd $1 > /dev/null; }
+ 
+# print usage
+function show_usage() {
+	printf "Usage: $0 [-h|--help][-o|--overwrite]\n"
+	printf "Options:\n"
+	printf " -h, --help:        show this message and exit\n"
+	printf " -o, --overwrite:   overwrite files\n"
+	return 0
+}
+
+while [ ! -z "$1" ]; do
+  case "$1" in
+	  "-h"|"--help") 
+      show_usage; exit 0 ;;
+	  "-o"|"--overwrite") 
+      overwrite=1 ;;
+  esac
+  shift
+done
+
+manifest=$( cat $DOTS/MANIFEST | grep -v "#" | sed '/^$/d' | tr -s ' ' )
+
+IFS=$'\n'
+for line in $manifest; do
+  file=$DOTS/$( echo "$line" | cut -d" " -f1 )
+  link=$DEST/$( echo "$line" | cut -d" " -f2 )
+
+  # file does not exist
+  [ ! -f "$file" -a ! -d "$file" ] && >&2 echo "file '$file' does not exist!" && continue 
+  # dont overwrite by default
+  [ -z $overwrite ] && [ -f "$link" -o -d "$link" ] && >&2 echo "cant overwrite '$link', use --overwrite to force" && continue
+  
+  # if link is dir remove dest dir if it exists
+  [ -d "$link" ] && rm -r "$link"
+
+  # create destination dir if it does not exist
+  dest_dir=$(dirname $link)
+  [ ! -d "$dest_dir" ] && echo "creating dir: '$dest_dir'" && mkdir -p "$dest_dir"
+  
+  echo "creating link: $file -> $link"
+  ln -fs $file $link
+done
