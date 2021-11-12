@@ -1,0 +1,40 @@
+# file -> link location
+# file is relative to the dotfiles directory
+# link location is relative to $HOME
+
+#scripts/battery         .scripts/battery
+#scripts/audioctl        .scripts/audioctl
+#scripts/autoclicker     .scripts/autoclicker
+#scripts/battery         .scripts/battery
+#scripts/brightnessctl   .scripts/brightnessctl
+#scripts/generate        .scripts/generate
+#scripts/hideIt          .scripts/hideIt
+#scripts/otw             .scripts/otw
+#scripts/pick-color      .scripts/pick-color
+#scripts/reload          .scripts/reload
+#scripts/reload-dunst    .scripts/reload-dunst
+#scripts/rpimg           .scripts/rpimg
+#scripts/setLayout       .scripts/setLayout
+#scripts/start-eww       .scripts/start-eww
+#scripts/start-xob       .scripts/start-xob
+#scripts/temp            .scripts/temp
+#scripts/transadd        .scripts/transadd
+#scripts/transmission    .scripts/transmission
+#scripts/usedCpu         .scripts/usedCpu
+#scripts/usedRam         .scripts/usedRam
+#scripts/volume          .scripts/volume
+#scripts/wallpaper       .scripts/wallpaper
+#scripts/weather         .scripts/weather
+#scripts/webcam          .scripts/webcam
+
+=
+binge
+bluetooth
+emoji
+menu
+music
+powermenu
+run
+screenshot
+todo
+wifi
