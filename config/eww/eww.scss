@@ -1,0 +1,100 @@
+// import the colors from pywal
+@import '/home/sevbesau/.cache/wal/colors.scss';
+
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+  color: $foreground;
+}
+
+//Global Styles
+.sidebar {
+  background-color: rgba(darken($background, 2), 0.6);
+  padding: 10px;
+  margin: 0;
+}
+
+.time {
+  font-weight: bold;
+  font-size: 98px;
+  padding-top: 15px;
+}
+
+.date {
+  font-size: 18px;
+  padding-top: 15px;
+}
+
+.wireless {
+  margin: 0 35px 0 10px;
+}
+
+.icon {
+  font-size: 24px;
+  font-family: 'Font Awesome 5 Free';
+}
+
+.metric {
+  margin: 0 35px 0 85px;
+}
+
+.weather {
+  font-size: 18px;
+}
+.weather .icon {
+  font-size: 56px;
+  font-weight: bold;
+  color: $color2;
+}
+.weather .temp {
+  font-size: 56px;
+}
+.weather .quote {
+  font-size: 12px;
+}
+
+.weatherIcon {
+  margin-left: 85px;
+}
+.weatherTemp {
+  margin-left: 85px;
+  font-weight: normal;
+}
+
+.mpd .title {
+ font-size: 28px;
+ margin-left: 15px;
+}
+
+.mpd .buttons {
+  margin: 0 0px 0 28px;
+}
+
+.mpd button {
+  font-size: 28px;
+}
+
+
+scale trough highlight {
+  all: unset;
+  color: #000000;
+  background-color: $color2;
+  border-radius: 10px;
+}
+scale trough {
+  all: unset;
+  background-color: rgba(lighten($background, 3), 0.8);
+  border-radius: 50px;
+  min-height: 9px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.active {
+  color: green;
+}
+.inactive {
+  color: red;
+}
+
+

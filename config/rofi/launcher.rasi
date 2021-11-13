@@ -1,0 +1,9 @@
+// import common
+@import "common"
+
+listview {
+  columns:                        3;
+  lines:                          1;
+  spacing:                        0%;
+  cycle:                          false;
+}
