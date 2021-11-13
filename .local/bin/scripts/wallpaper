@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+wal -i $XDG_PICTURES_DIR/wallpapers -n --backend colorz
+feh --bg-fill --no-fehbg "$(< "$XDG_CACHE_HOME/wal/wal")"  
+
+reload

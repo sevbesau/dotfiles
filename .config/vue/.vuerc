@@ -1,0 +1,24 @@
+{
+  "useTaobaoRegistry": false,
+  "presets": {
+    "app": {
+      "useConfigFiles": false,
+      "plugins": {
+        "@vue/cli-plugin-babel": {},
+        "@vue/cli-plugin-router": {
+          "historyMode": false
+        },
+        "@vue/cli-plugin-vuex": {},
+        "@vue/cli-plugin-eslint": {
+          "config": "airbnb",
+          "lintOn": [
+            "save"
+          ]
+        }
+      },
+      "vueVersion": "3"
+    }
+  },
+  "latestVersion": "4.5.14",
+  "lastChecked": 1635161128503
+}

@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+ROFI="rofi -dmenu -lines 3 -theme $XDG_CONFIG_HOME/rofi/list.rasi"
+NOTIFY="notify-send -u low calculate"
+
+answer=$(echo "$@" | bc -l | sed '/\./ s/\.\{0,1\}0\{1,\}$//')
+
+action=$(echo -e "Copy to clipboard\nClear\nClose" | $ROFI -p "= $answer")
+
+case $action in
+    "Clear") $0 ;;
+    "Close") ;;
+    "") ;;
+    "Copy to clipboard") 
+      echo -n "$answer" | xclip -selection clipboard
+      echo -n "$answer" | xclip
+      $NOTIFY "copied $answer"
+      ;;
+    *) $0 "$answer $action" ;;
+esac

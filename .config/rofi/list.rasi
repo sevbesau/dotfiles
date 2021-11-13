@@ -1,0 +1,28 @@
+// import common
+@import "common"
+
+prompt {
+	font:							  "Hack 12";
+}
+
+entry {
+  placeholder:        "";
+}
+
+listview {
+  scrollbar: false;
+}
+
+element {
+  padding: 0;
+}
+
+element-text {
+	font:							  "monospace 14";
+  horizontal-align:               0;
+  padding: 0 0 12px 0;
+}
+
+element-icon {
+  size:                           0;
+}

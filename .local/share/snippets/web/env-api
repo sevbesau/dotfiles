@@ -1,0 +1,18 @@
+const path = require('path');
+
+env = {
+  MAILJET_APIKEY_PUB: 'f74e46e81edcb2551ebdd58991cb1ec3',
+  MAILJET_APIKEY_PRIV: '28408b0b8e78a18d378494715914263d',
+  MONGO_URI: 'mongodb://localhost:27017/{{name}}',
+  PORT: 3000,
+  APP_URL: 'http://localhost:8080/#',
+  MAILS_FROM: 'info@sevbesau.xyz',
+  UPLOADS_DIR: path.join(__dirname, 'uploads'),
+  COOKIE_SECRET: 'secret',
+};
+
+// merge the env vars on the process.env object
+process.env = {
+  ...process.env,
+  ...env
+};

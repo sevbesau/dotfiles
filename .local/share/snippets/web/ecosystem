@@ -1,0 +1,18 @@
+const path = require('path');
+const root = __dirname;
+
+module.exports = {
+  apps: [
+    {
+      name: '{{name}}-api',
+      cwd: path.join(root, 'api'),
+      script: 'node_modules/nodemon/bin/nodemon.js',
+    },
+    {
+      name: '{{name}}-app',
+      cwd: path.join(root, 'app'),
+      script: 'node_modules/@vue/cli-service/bin/vue-cli-service.js',
+      args: 'serve',
+    },
+  ],
+};

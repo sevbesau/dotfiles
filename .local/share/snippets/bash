@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+function show_usage() {
+	printf "Usage: $0 [-m message]\n\n"
+	printf "Options:\n"
+	printf " -m\t--message\tprint the message\n"
+	printf " -h\t--help\t\tprint this message and exit\n"
+	return 0
+}
+
+# parse the args
+while [ ! -z "$1" ]; do
+  case "$1" in
+	  "-m"|"--message") 
+      message=$2; shift ;;
+	  "-h"|"--help") 
+      show_usage; exit 0;;
+  esac
+  shift
+done
+
+# validate the args
+if [ -z $message ]; then
+	echo "-m is required"
+	show_usage
+	exit 1
+fi
+
+echo $message
+exit 0
+
