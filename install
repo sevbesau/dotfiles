@@ -2,7 +2,9 @@
 
 # constants
 DOTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-DEST=$HOME
+#DEST=$HOME
+DEST="./home"
+
 
 # silent pushd
 pushd() { builtin pushd $1 > /dev/null; }
@@ -17,6 +19,49 @@ function show_usage() {
 	return 0
 }
 
+manifest=$( cat $DOTS/MANIFEST | grep -v "#" | sed '/^$/d' | tr -s ' ' )
+sections=$( echo -e "$manifest" | grep -n "\[.\+\]" | cut -d: -f1 | xargs )
+
+function get_section {
+  section_start=$( echo -e "$manifest" | grep -n "\[$1\]" | cut -d: -f1 )
+  for section in $sections; do
+    [[ "$section" -gt "$section_start" ]] && break;
+  done
+  section_end=$(( $section - 1 ))
+  echo -e "$manifest" | sed -n "$section_start"",""$section_end""p" | grep -v "\[$1\]"
+}
+
+function link_files {
+  links=$( get_section "links" )
+  
+  IFS=$'\n'
+  for line in $links; do
+    file=$DOTS/$( echo "$line" | cut -d" " -f1 )
+    link=$DEST/$( echo "$line" | cut -d" " -f2 )
+  
+    # file does not exist
+    [ ! -f "$file" -a ! -d "$file" ] && >&2 echo "file '$file' does not exist!" && continue 
+    # dont overwrite by default
+    [ -z "$overwrite" ] && [ -f "$link" -o -d "$link" ] && >&2 echo "cant overwrite '$link', use --overwrite to force" && continue
+    
+    # if link is dir remove dest dir if it exists
+    [ -d "$link" ] && rm -r "$link"
+  
+    # create destination dir if it does not exist
+    dest_dir=$(dirname $link)
+    [ ! -d "$dest_dir" ] && echo "creating dir: '$dest_dir'" && mkdir -p "$dest_dir"
+    
+    echo "creating link: $file -> $link"
+    ln -fs $file $link
+  done
+}
+
+function install_pywall {
+  # TODO link pywal configs
+  echo install
+}
+
+
 while [ ! -z "$1" ]; do
   case "$1" in
 	  "-h"|"--help") 
@@ -27,25 +72,4 @@ while [ ! -z "$1" ]; do
   shift
 done
 
-manifest=$( cat $DOTS/MANIFEST | grep -v "#" | sed '/^$/d' | tr -s ' ' )
-
-IFS=$'\n'
-for line in $manifest; do
-  file=$DOTS/$( echo "$line" | cut -d" " -f1 )
-  link=$DEST/$( echo "$line" | cut -d" " -f2 )
-
-  # file does not exist
-  [ ! -f "$file" -a ! -d "$file" ] && >&2 echo "file '$file' does not exist!" && continue 
-  # dont overwrite by default
-  [ -z $overwrite ] && [ -f "$link" -o -d "$link" ] && >&2 echo "cant overwrite '$link', use --overwrite to force" && continue
-  
-  # if link is dir remove dest dir if it exists
-  [ -d "$link" ] && rm -r "$link"
-
-  # create destination dir if it does not exist
-  dest_dir=$(dirname $link)
-  [ ! -d "$dest_dir" ] && echo "creating dir: '$dest_dir'" && mkdir -p "$dest_dir"
-  
-  echo "creating link: $file -> $link"
-  ln -fs $file $link
-done
+link_files

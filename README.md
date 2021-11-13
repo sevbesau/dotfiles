@@ -129,6 +129,7 @@ Note: this list is not exhaustive, but gives a high level overview of the softwa
 - redshift: shift display color temprature based on time
 - rofi: application launcher
 - papirus-icon-theme: icon theme to use with rofi
+- pipewire: minimal latency audio and video capture and playback
 
 ### Fonts:
 
@@ -136,3 +137,8 @@ Note: this list is not exhaustive, but gives a high level overview of the softwa
 - Joy Pixels
 - Noto Color Emoji
 - Hack (monospace)
+
+### Themes:
+- gtk2: arc-dark
+- icons: Papirus
+- cursor: breeze
