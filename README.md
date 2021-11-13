@@ -10,6 +10,9 @@
 - [ ] extract keybinds from i3 config
 - [ ] alt+space eww
 - [ ] scripts
+  - [ ] backup 
+    - [ ] documents 
+    - [ ] notify on dotfile changes
   - [ ] mount 
   - [ ] video (binge)
   - [ ] bluetooth
