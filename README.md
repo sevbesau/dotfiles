@@ -2,21 +2,18 @@
 
 ## TODO
 
-- [ ] dotfiles repo
-- [ ] dotfiles repo
-- [ ] install & configure script
+- [ ] install & configure dots script
 - [ ] dunst keybinds (dunstctl)
-- [ ] workspace switcher -> [eww](https://github.com/elkowar/eww)
-- [ ] clean up
-  - [ ] dotfiles
-  - [ ] home
-  - [ ] scripts -> ./local/bin
+- [ ] workspace switcher -> use [eww](https://github.com/elkowar/eww)?
+- [ ] clean up home
+- [ ] list all required packages
+- [ ] extract keybinds from i3 config
+- [ ] alt+space eww
 - [ ] scripts
   - [ ] mount 
   - [ ] video
   - [ ] define/dict
 - [ ] bugs
-  - [ ] discord colors
   - [ ] eww weather min and max temp
   - [ ] eww fix spacing
 - [ ] integrated app + api + rofi!
@@ -27,10 +24,7 @@
 ## Handy links
 
 - blackarch [install repo](https://www.blackarch.org/downloads.html#install-repo)
-- dotfiles [github](https://github.com/sevbesau/dotfiles)
 - thinkpad t480 + arch [wiki](https://wiki.archlinux.org/title/Lenovo_ThinkPad_T480)
-- budlabs (linux ricing youtuber) [youtube](https://www.youtube.com/channel/UCi8XrDg1bK_MJ0goOnbpTMQ)
-- great configs (e.g. xob) [dotfiles](https://github.com/joni22u/dotfiles)
 
 ## General philosophy
 
@@ -39,17 +33,11 @@
 Applications should take the mainstage, no bars that take up valueable realestate.
 
 Information like date, and battery should be available at a glance though.
-Right now this is done using a sidebar that shows/hides using stiky corners
+Right now this is done using a sidebar that shows/hides using stiky corners or alt+space.
 
 ### Colors
 
 All colors are based on the current wallpaper, this is done using pywal
-
-- vscode required a plugin: Wal Theme by dlasagno
-- firefox and thunderbird: pywalfox
-- xob: updated by setColors script
-- discord: betterdiscord + pywal-discord
-- all the rest is handled by pywal
 
 ## System information display
 
@@ -62,14 +50,16 @@ All colors are based on the current wallpaper, this is done using pywal
 
 #### sidebar widgets:
 
-- [X] time
-- [X] date
-- [X] system stats (ram, cpu, disk)
-- [X] music player (current, progress, controls)
-- [X] battery state
-- [X] bluetooth state
-- [X] network state
-- [X] weather
+These widgets are shown in a sidebar, for quick access
+
+- time
+- date
+- system stats (ram, cpu, disk)
+- music player (current, progress, controls)
+- battery state
+- bluetooth state
+- network state
+- weather
 
 ### [xob](https://github.com/florentc/xob)
 
@@ -78,8 +68,6 @@ All colors are based on the current wallpaper, this is done using pywal
 
 ### [dunst](https://dunst-project.org/documentation/)
 
-- good images [github](https://github.com/Axarva/dotfiles-2.0/tree/main/config/dunst)
-
 #### notifications
 
 - mails
@@ -87,7 +75,7 @@ All colors are based on the current wallpaper, this is done using pywal
 
 ## Dependencies
 
-Note: this list is not exhaustive, but gives a high level overview of the software my setup uses
+Note: this list is not exhaustive, but gives a shallow high level overview of the software my setup uses
 
 ### Software
 
