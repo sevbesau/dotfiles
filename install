@@ -2,8 +2,8 @@
 
 # constants
 DOTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-#DEST=$HOME
-DEST="./home"
+DEST=$HOME
+#DEST="./home"
 AUR_DEST="$DEST/aur"
 
 # silent pushd
@@ -36,15 +36,15 @@ function link_files {
     file=$DOTS/$( echo "$line" | cut -d" " -f1 )
     link=$DEST/$( echo "$line" | cut -d" " -f2 )
     # file does not exist
-    [ ! -f "$file" -a ! -d "$file" ] && >&2 echo "[links] file '$file' does not exist!" && continue 
+    [ ! -f "$file" -a ! -d "$file" ] && >&2 echo "[links] ❌ file '$file' does not exist!" && continue 
     # dont overwrite by default
-    [ -z "$overwrite" ] && [ -f "$link" -o -d "$link" ] && >&2 echo "[links] cant overwrite '$link', use --overwrite to force" && continue
+    [ -z "$overwrite" ] && [ -f "$link" -o -d "$link" ] && >&2 echo "[links] ❌ cant overwrite '$link', use --overwrite to force" && continue
     # if link is dir remove dest dir if it exists
     [ -d "$link" ] && rm -r "$link"
     # create destination dir if it does not exist
     dest_dir=$(dirname $link)
-    [ ! -d "$dest_dir" ] && echo "[links] creating dir: '$dest_dir'" && mkdir -p "$dest_dir"
-    echo "[links] creating link: $file -> $link"
+    [ ! -d "$dest_dir" ] && mkdir -p "$dest_dir" && echo "[links] ✅ created dir: '$dest_dir'" 
+    echo "[links] ✅ created link: $file -> $link"
     ln -fs $file $link
   done < <( get_section "links" )
   echo "[links] done"
@@ -108,7 +108,7 @@ while [ ! -z "$1" ]; do
   shift
 done
 
-#link_files
-install_aur
+link_files
+#install_aur
 #install_packages
 
