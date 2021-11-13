@@ -11,7 +11,10 @@
 - [ ] alt+space eww
 - [ ] scripts
   - [ ] mount 
-  - [ ] video
+  - [ ] video (binge)
+  - [ ] bluetooth
+  - [ ] generate
+  - [ ] weather
   - [ ] define/dict
 - [ ] bugs
   - [ ] eww weather min and max temp
