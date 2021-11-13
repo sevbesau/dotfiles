@@ -4,7 +4,7 @@
 DOTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 #DEST=$HOME
 DEST="./home"
-
+AUR_DEST="$DEST/aur"
 
 # silent pushd
 pushd() { builtin pushd $1 > /dev/null; }
@@ -15,52 +15,88 @@ function show_usage() {
 	printf "Usage: $0 [-h|--help][-o|--overwrite]\n"
 	printf "Options:\n"
 	printf " -h, --help:        show this message and exit\n"
-	printf " -o, --overwrite:   overwrite files\n"
+	printf " -o, --overwrite:   overwrite files (destructive, use with care!)\n"
 	return 0
 }
 
-manifest=$( cat $DOTS/MANIFEST | grep -v "#" | sed '/^$/d' | tr -s ' ' )
-sections=$( echo -e "$manifest" | grep -n "\[.\+\]" | cut -d: -f1 | xargs )
-
 function get_section {
-  section_start=$( echo -e "$manifest" | grep -n "\[$1\]" | cut -d: -f1 )
-  for section in $sections; do
+  section_start=$( grep -n "\[$1\]" "$DOTS/MANIFEST" | cut -d: -f1 )
+  for section in $( grep -n "\[.\+\]" "$DOTS/MANIFEST" | cut -d: -f1 | xargs ); do
     [[ "$section" -gt "$section_start" ]] && break;
   done
-  section_end=$(( $section - 1 ))
-  echo -e "$manifest" | sed -n "$section_start"",""$section_end""p" | grep -v "\[$1\]"
+  # is this the last section?
+  [[ "$section" -eq "$section_start" ]] && section_end=$( cat "$DOTS/MANIFEST" | wc -l ) || section_end=$(( $section - 1 ))
+  cat "$DOTS/MANIFEST" | sed -n "$section_start"",""$section_end""p" | grep -v "\[$1\]" | grep -v "#" | sed '/^$/d' | tr -s ' ' 
 }
 
 function link_files {
-  links=$( get_section "links" )
-  
-  IFS=$'\n'
-  for line in $links; do
+  echo "[links] linking config files"
+  while read -r line; do
+    # parse the line
     file=$DOTS/$( echo "$line" | cut -d" " -f1 )
     link=$DEST/$( echo "$line" | cut -d" " -f2 )
-  
     # file does not exist
-    [ ! -f "$file" -a ! -d "$file" ] && >&2 echo "file '$file' does not exist!" && continue 
+    [ ! -f "$file" -a ! -d "$file" ] && >&2 echo "[links] file '$file' does not exist!" && continue 
     # dont overwrite by default
-    [ -z "$overwrite" ] && [ -f "$link" -o -d "$link" ] && >&2 echo "cant overwrite '$link', use --overwrite to force" && continue
-    
+    [ -z "$overwrite" ] && [ -f "$link" -o -d "$link" ] && >&2 echo "[links] cant overwrite '$link', use --overwrite to force" && continue
     # if link is dir remove dest dir if it exists
     [ -d "$link" ] && rm -r "$link"
-  
     # create destination dir if it does not exist
     dest_dir=$(dirname $link)
-    [ ! -d "$dest_dir" ] && echo "creating dir: '$dest_dir'" && mkdir -p "$dest_dir"
-    
-    echo "creating link: $file -> $link"
+    [ ! -d "$dest_dir" ] && echo "[links] creating dir: '$dest_dir'" && mkdir -p "$dest_dir"
+    echo "[links] creating link: $file -> $link"
     ln -fs $file $link
+  done < <( get_section "links" )
+  echo "[links] done"
+}
+
+function install_aur {
+  repos=$( get_section "aur" | xargs )
+  echo "[aur] installing $( echo "$repos" | wc -w ) packages"
+
+  [ ! -d "$AUR_DEST" ] && mkdir -p "$AUR_DEST" && echo "[aur] created dir: '$AUR_DEST'"
+  [ -d "$AUR_DEST" ] || echo "[aur] ❌ failed to create dir: '$AUR_DEST'" || return
+  pushd "$AUR_DEST"
+  for repo in $repos; do
+    dirname=$(echo "$repo" | sed 's/^https:\/\/aur.archlinux.org\/\(.*\)\.git$/\1/' )
+    [ -z "$overwrite" ] && [ -d "$dirname" ] && echo "[aur] ❌ cant overwrite '$dirname', use --overwrite to force" && continue
+    [ -d "$dirname" ] && rm -r "$dirname"
+    git clone --quiet "$repo" "$dirname" 2> /dev/null
+    [ -z "$(ls -A $dirname | grep -v .git )" ] && rm -r "$dirname" && echo "[aur] ❌ failed to clone '$repo'" && continue
+    pushd "$dirname"
+      makepkg -sic --noconfirm --noprogressbar > /dev/null 2>&1 
+    popd
   done
+  popd
+  echo "[aur] done"
 }
 
-function install_pywall {
+function install_packages {
+  packages=$( get_section "packages" | xargs )
+  echo -e "[packages] installing $( echo "$packages" | wc -w ) packages"
+  for package in $packages; do
+    #echo "[packages] installing $package"
+    sudo pacman -S --noconfirm $package > /dev/null 2>&1 && echo "[packages] ✅ installed $package" || echo "[packages] ❌ failed to install $package"
+  done
+  echo "[packages] done"
+}
+
+function install_slock {
+  # get the repo 
+  # build and install the repo
+  echo "install slock"
+}
+
+function enable_services {
+  # get the repo 
+  # build and install the repo
+  echo "enable services"
+}
+
+function configure_pywall {
   # TODO link pywal configs
-  echo install
+  echo "configure pywall" 
 }
-
 
 while [ ! -z "$1" ]; do
   case "$1" in
@@ -72,4 +108,7 @@ while [ ! -z "$1" ]; do
   shift
 done
 
-link_files
+#link_files
+install_aur
+#install_packages
+

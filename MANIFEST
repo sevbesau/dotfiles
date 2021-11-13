@@ -67,7 +67,44 @@
 .xinitrc                           .xinitrc
 
 [packages]
+throttled
+gstreamer
+ranger
+eid-mw
+maim
+neovim
+firefox
+thunderbird
+mpv
+mpd
+mpc
+code
+dunst
+libnotify
+xterm
+i3-gaps
+htop
+pipewire-pulse
+transmission-cli
+autorandr
+xorg-xev
+gucharmap
+python-pywal
 
 [aur]
+https://aur.archlinux.org/colorpiiicker.git
+#https://aur.archlinux.org/wool.git
+#https://aur.archlinux.org/xob.git
+#https://aur.archlinux.org/batify.git
+#https://aur.archlinux.org/blight.git
+#https://aur.archlinux.org/colorpicker.git
+#https://aur.archlinux.org/libxft-bgra.git
+#https://aur.archlinux.org/mpdris2.git
+#https://aur.archlinux.org/ytmdl.git
+#https://aur.archlinux.org/xcursor-breeze.git
+#https://aur.archlinux.org/toilet.git
+#https://aur.archlinux.org/pulseaudio-modules-bt.git
+#https://aur.archlinux.org/rxvt-unicode-truecolor-wide-glyphs.git
 
+[services]
 
