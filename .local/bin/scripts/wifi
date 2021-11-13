@@ -37,9 +37,9 @@ function scan {
 # get the scan results
 function scan_results {
 	# get the results
-	results=$( $WPA_CLI scan_results | tail -n +3 )
+	results=$( $WPA_CLI scan_results | tail -n +2 )
 	# no cached results -> rescan
-	[ -z "$results" ] && wpa_command scan && sleep 3 && results=$( $WPA_CLI scan_results | tail -n +3 )
+	[ -z "$results" ] && wpa_command scan && sleep 3 && results=$( $WPA_CLI scan_results | tail -n +2 )
 	echo -e "$results"
 }
 

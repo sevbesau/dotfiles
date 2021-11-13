@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-#notify-send "TODO" "$( basename $0 )"
-
 function open {
   eww open "sidebar"
   eww open "time"
