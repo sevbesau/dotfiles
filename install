@@ -71,6 +71,13 @@ function install_aur {
   echo "[aur] done"
 }
 
+function install_udev {
+  # TODO link udev rules
+  echo "install udev rules" 
+}
+
+
+
 function install_packages {
   packages=$( get_section "packages" | xargs )
   echo -e "[packages] installing $( echo "$packages" | wc -w ) packages"
@@ -97,6 +104,8 @@ function configure_pywall {
   # TODO link pywal configs
   echo "configure pywall" 
 }
+
+
 
 while [ ! -z "$1" ]; do
   case "$1" in
