@@ -5,6 +5,8 @@
 
 # scripts
 .local/bin/scripts/=               .local/bin/scripts/= 
+.local/bin/scripts/loopback        .local/bin/scripts/loopback
+.local/bin/scripts/cast-app        .local/bin/scripts/cast-app
 .local/bin/scripts/audioctl        .local/bin/scripts/audioctl
 .local/bin/scripts/autoclicker     .local/bin/scripts/autoclicker
 .local/bin/scripts/battery         .local/bin/scripts/battery
