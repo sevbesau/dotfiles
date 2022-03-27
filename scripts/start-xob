@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+killall xob 2> /dev/null
+
+# volume
+pgrep -f volume | xargs kill
+volume | xob -s volume & 
+
+brightnesspipe="/tmp/xob-brightnesspipe"
+[ -p "$brightnesspipe" ] || mkfifo "$brightnesspipe"
+kill $( ps -aux | grep "tail -f /tmp/xob-brightnesspipe" | grep -v grep | awk '{ print $2 }' | xargs ) 2> /dev/null
+tail -f "$brightnesspipe" | xob -s brightness &

@@ -1,0 +1,64 @@
+#!/usr/bin/env sh
+
+ROFI="rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/list.rasi -p"
+
+DEFAULT_PATH="/tmp/screenshot.png"
+
+SCREENSHOTS="$XDG_PICTURES_DIR/screenshots"
+# make sure the screenshots dir exists
+[ -d "$SCREENSHOTS" ] || mkdir -p "$SCREENSHOTS"
+
+DELAY="$XDG_CACHE_HOME/screenshot-delay"
+[ -f "$DELAY" ] || echo 0 > $DELAY
+
+# takes a screenshot
+function screenshot {
+	[ -n "$1" ] && delay="$1" || delay="0"
+	if [ -n "$2" ]; then
+		file_path="$SCREENSHOTS/$2" 
+		message="saved to '$2'"
+	else
+		file_path="$DEFAULT_PATH"
+		message="copied to clipboard"
+	fi
+	# echo "path: $file_path, delay: $delay, message: $message"
+
+	maim -s -u -d "$delay" "$file_path" > /dev/null
+	if [ "$?" = "0" ]; then
+		cat "$file_path" | xclip -t image/png
+		cat "$file_path" | xclip -t image/png -selection clipboard
+		notify-send -i "$file_path" "Screenshot" "$message"
+	fi
+}
+
+function set_delay {
+	delay=$( cat "$DELAY" )
+	delay=$( echo -e "0\n1\n2\n3\n5\n8\n13\n21\n34" | $ROFI "delay" -select "$delay" )
+	[ -n "$delay" ] || delay="0"
+	echo "$delay" > "$DELAY"
+}
+
+function pick_filename {
+	existing=$( ls "$SCREENSHOTS" | grep "\.png\$" )
+	filename=$( echo -e "$existing" | $ROFI "filename" | sed 's/\.png$//' )
+	while [ -f "$SCREENSHOTS/$filename.png" ]; do
+		filename=$( echo -e "$existing" | $ROFI "filename taken" | sed 's/\.png$//' )
+	done
+	echo "$filename.png"
+}
+
+function menu {
+	delay=$( cat "$DELAY" )
+	selection=$( echo -e "Copy\nSave\nDelay: $delay" | $ROFI "screenshot" )
+	case "$selection" in
+		"Copy") screenshot "$delay" ;;
+		"Delay"*) set_delay; menu ;;
+		"Save") 
+			filename="$(pick_filename)"
+			[ "$filename" = ".png" ] || screenshot "$delay" "$filename" ;;
+	esac
+}
+
+
+[ "$#" = "0" ] && menu || screenshot "$@"
+

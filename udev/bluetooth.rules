@@ -1,0 +1,4 @@
+ACTION=="add", SUBSYSTEM=="hwmon", \
+ATTR{name}=="hid_f1:69:6e:f7:36:77_battery", \
+IMPORT{program}="/usr/bin/xpub", \
+RUN+="/bin/su $env{XUSER} -c 'setxkbmap -option caps:escape'"

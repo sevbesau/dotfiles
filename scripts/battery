@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+HANDLER="/sys/class/power_supply/BAT"
+
+# add the states of the batteries
+curr="0"
+cap="0"
+for i in {0..1}; do
+  if [ -d $HANDLER$i ]; then
+    curr=$(( $curr + $(cat $HANDLER$i/energy_now) ))
+    cap=$(( $cap + $(cat $HANDLER$i/energy_full) ))
+  fi
+done
+
+# calculate the percentage
+percentage=$( echo "($curr / $cap) * 100" | bc -l | sed 's/\..*$//' )
+
+# get the icon
+if [ $(cat /sys/class/power_supply/AC/online) = "0" ]; then 
+  [ $percentage -gt 0  ] && icon=
+  [ $percentage -gt 15 ] && icon=
+  [ $percentage -gt 50 ] && icon=
+  [ $percentage -gt 75 ] && icon=
+  [ $percentage -gt 90 ] && icon=
+else
+  icon="  "
+fi
+
+# what to print?
+case "$1" in
+  "-i"|"--icon") echo -e "$icon" ;;
+  "-p"|"--percentage") echo $percentage ;;
+esac

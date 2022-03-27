@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+rofi -show drun -theme $XDG_CONFIG_HOME/rofi/launcher.rasi -p open -matching fuzzy

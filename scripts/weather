@@ -1,0 +1,73 @@
+#!/usr/bin/env sh
+
+## Collect data
+cache_dir="$XDG_CACHE_HOME/weather"
+cache_weather_temp=${cache_dir}/temp
+cache_weather_temp_min=${cache_dir}/temp_min
+cache_weather_temp_max=${cache_dir}/temp_max
+cache_weather_icon=${cache_dir}/icon
+
+# TODO get city id by wttr.in
+# TODO get min max
+
+## Weather data
+KEY="e72e440c08bf07a35bc0d1273f55ff1f"
+ID="2794117"
+UNIT="metric"	# Available options : 'metric' or 'imperial'
+
+## Make cache dir
+[[ -d "$cache_dir" ]] || mkdir -p $cache_dir
+
+## Get data
+get_data() {
+  url="http://api.openweathermap.org/data/2.5/weather?APPID="$KEY"&id="$ID"&units="$UNIT""
+	weather=$( curl -sf "$url" )
+	#echo -e "$weather"
+
+	if [ ! -z "$weather" ]; then
+		weather_temp=`echo "$weather" | jq ".main.temp" | cut -d "." -f 1`
+		weather_icon_code=`echo "$weather" | jq -r ".weather[].icon" | head -1`
+
+    case "$weather_icon_con" in
+		  "50d") weather_icon=" " ;;
+		  "50n") weather_icon=" " ;;
+		  "01d") weather_icon=" " ;;
+		  "01n") weather_icon=" " ;;
+		  "02d") weather_icon=" " ;;
+		  "02n") weather_icon=" " ;;
+		  "03d") weather_icon=" " ;;
+		  "03n") weather_icon=" " ;;
+		  "04d") weather_icon=" " ;;
+		  "04n") weather_icon=" " ;;
+		  "09d") weather_icon=" " ;;
+		  "09n") weather_icon=" " ;;
+		  "10d") weather_icon=" " ;;
+		  "10n") weather_icon=" " ;;
+		  "11d") weather_icon=" " ;;
+		  "11n") weather_icon=" " ;;
+		  "13d") weather_icon=" " ;;
+		  "13n") weather_icon=" " ;;
+		  "40d") weather_icon=" " ;; 
+		  "40n") weather_icon=" " ;;
+		  *)     weather_icon=" " ;;
+    esac
+
+		echo "$weather_icon" >  ${cache_weather_icon}
+		echo "$weather_temp""°C" > ${cache_weather_temp}
+	else
+		echo " " > ${cache_weather_icon}
+		echo "-" > ${cache_weather_temp}
+	fi
+}
+
+function update {
+  while true; do
+    get_data
+    sleep $(( 60 * 60 ))
+  done
+}
+
+case "$1" in
+  "--update") update ;;
+  *) echo $( cat $cache_weather_icon ) $( cat $cache_weather_temp )
+esac

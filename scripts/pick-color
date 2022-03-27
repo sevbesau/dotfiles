@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+color=$( colorpicker --short --one-shot )
+echo "$color" | tr -d '\n' | xclip -selection clipboard
+echo "$color" | tr -d '\n' | xclip
+notify-send "'$color' copied to clipboard."

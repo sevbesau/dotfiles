@@ -1,0 +1,49 @@
+{
+    "layout": "splith",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 556,
+               "width": 884,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "sevbesau@arch:~",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^XTerm$"
+               }
+            ],
+            "type": "con"
+        },
+
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 556,
+               "width": 884,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "sevbesau@arch:~",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^XTerm$"
+               }
+            ],
+            "type": "con"
+        }
+
+    ]
+}

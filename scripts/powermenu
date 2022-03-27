@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+ROFI="rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/powermenu.rasi"
+
+selection=$( echo -e " Lock\n Suspend\n Hibernate\n Exit i3\n Reboot\n Shut down" | $ROFI )
+
+case "$selection" in
+  *"Lock") sleep 0.2 && slock ;;
+  *"Suspend") systemctl suspend ;;
+  *"Hibernate") systemctl hibernate ;;
+  *"Reboot") systemctl reboot ;;
+  *"Shut down") systemctl poweroff ;;
+  *"Exit i3") killall i3 ;;
+esac
+
+# 
