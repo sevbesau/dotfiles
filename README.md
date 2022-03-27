@@ -2,34 +2,23 @@
 
 ## TODO
 
-- [ ] install & configure dots script
 - [ ] dunst keybinds (dunstctl)
-- [ ] workspace switcher -> use [eww](https://github.com/elkowar/eww)?
-- [ ] clean up home
 - [ ] list all required packages
 - [ ] extract keybinds from i3 config
-- [ ] alt+space eww
 - [ ] scripts
   - [ ] backup 
     - [ ] documents 
     - [ ] notify on dotfile changes
   - [ ] mount 
   - [ ] video (binge)
-  - [ ] bluetooth
   - [ ] generate
   - [ ] weather
   - [ ] define/dict
 - [ ] bugs
   - [ ] eww weather min and max temp
-  - [ ] eww fix spacing
-- [ ] integrated app + api + rofi!
-  - [ ] time tracking 
-  - [ ] contacts
-  - [ ] calendar
 
 ## Handy links
 
-- blackarch [install repo](https://www.blackarch.org/downloads.html#install-repo)
 - thinkpad t480 + arch [wiki](https://wiki.archlinux.org/title/Lenovo_ThinkPad_T480)
 
 ## General philosophy
@@ -38,24 +27,19 @@
 
 Applications should take the mainstage, no bars that take up valueable realestate.
 
-Information like date, and battery should be available at a glance though.
-Right now this is done using a sidebar that shows/hides using stiky corners or alt+space.
+Information like date, and battery should be available at a glance.
+This is achieved using a sidebar that shows/hides using sticky corners.
 
 ### Colors
 
-All colors are based on the current wallpaper, this is done using pywal
+All system colors are based on the current wallpaper, this is done using pywal
+Code should always use the same colorscheme, I use monokai, this is also the fallback colorscheme.
 
 ## System information display
 
 ### [EWW](https://elkowar.github.io/eww/eww.html)
 
-#### workspace switcher
-
-- show all 10 workspaces
-- show active, inactive and current
-
-#### sidebar widgets:
-
+Eww is used to display a sidebar
 These widgets are shown in a sidebar, for quick access
 
 - time
@@ -74,14 +58,14 @@ These widgets are shown in a sidebar, for quick access
 
 ### [dunst](https://dunst-project.org/documentation/)
 
-#### notifications
+Dunst is the notification server, it is configured to give notifications for:
 
 - mails
 - music
 
-## Dependencies
+## (WIP) Dependencies
 
-Note: this list is not exhaustive, but gives a shallow high level overview of the software my setup uses
+Note: this list is not exhaustive, but gives a high level overview of the software my setup uses
 
 ### Software
 
@@ -136,3 +120,4 @@ Note: this list is not exhaustive, but gives a shallow high level overview of th
 - gtk2: arc-dark
 - icons: Papirus
 - cursor: breeze
+
