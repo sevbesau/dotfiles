@@ -17,14 +17,19 @@ function close {
 # sets WIDTH and HEIGHT
 eval $(xdotool getdisplaygeometry --shell)
 
+echo hello
  
 while :; do
   # sets X and Y
   eval $(xdotool getmouselocation --shell)
+
+	echo $X $Y "$(( $HEIGHT / 2))"
  
   # bottom left
-	[[ "$X" -lt "2" && "$Y" -gt "$(( $HEIGHT - 2))" && $( pgrep -c minecraft ) -lt 1 ]] \
-    && open > /dev/null
+	if [[ "$X" -lt "2" && "$Y" -gt "$(( $HEIGHT / 2))" && $( pgrep -c minecraft ) -lt 1 ]]; then
+   echo open 
+	 open > /dev/null
+	fi
     
 	[[ "$X" -gt "$(( $WIDTH / 3 ))" && "$( eww state )" ]] \
     && close > /dev/null
