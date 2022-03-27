@@ -1,0 +1,11 @@
+[user]
+	email = seppe@sevbesau.xyz
+	name = sevbesau
+	editor = nvim
+[core]
+	editor = nvim
+[init]
+	defaultBrach = main
+	defaultBranch = main
+[credential]
+	helper = cache

@@ -77,7 +77,6 @@ function install_udev {
 }
 
 
-
 function install_packages {
   packages=$( get_section "packages" | xargs )
   echo -e "[packages] installing $( echo "$packages" | wc -w ) packages"

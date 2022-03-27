@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+function open {
+  eww open "sidebar"
+  eww open "time"
+  eww open "date"
+  eww open "weather"
+  eww open "wireless"
+  eww open "stats"
+  eww open "mpd"
+}
+
+function close {
+  eww close-all
+}
+
+# sets WIDTH and HEIGHT
+eval $(xdotool getdisplaygeometry --shell)
+
+ 
+while :; do
+  # sets X and Y
+  eval $(xdotool getmouselocation --shell)
+ 
+  # bottom left
+	[[ "$X" -lt "2" && "$Y" -gt "$(( $HEIGHT - 2))" && $( pgrep -c minecraft ) -lt 1 ]] \
+    && open > /dev/null
+    
+	[[ "$X" -gt "$(( $WIDTH / 3 ))" && "$( eww state )" ]] \
+    && close > /dev/null
+
+  sleep 0.1
+done
