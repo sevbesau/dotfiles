@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-# set backlight
-blight set $1"10%"
-# calculate percentage
-curr=$( blight get brightness )
-max=$( blight get max-brightness )
-# send percentage to xob pipe
-echo $( echo "($curr / $max) * 100" | bc -l | cut -d. -f 1 ) >> /tmp/xob-brightnesspipe

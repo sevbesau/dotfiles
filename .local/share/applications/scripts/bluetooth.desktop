@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Exec=/usr/bin/env bluetooth %u
-Icon=bluetooth
-Name=Bluetooth

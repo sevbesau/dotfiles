@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-pidof transmission-daemon >/dev/null || (transmission-daemon --auth --password linux --username arch && firefox 127.0.0.1:9091 && notify-send "Transmission" "started daemon" && sleep 3 )
-
-transmission-remote --auth arch:linux -a "$@" && notify-send "Transmission" "🧲 torrent added"
