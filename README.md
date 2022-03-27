@@ -32,7 +32,8 @@ This is achieved using a sidebar that shows/hides using sticky corners.
 
 ### Colors
 
-All system colors are based on the current wallpaper, this is done using pywal
+All system colors are based on the current wallpaper, this is done using pywal.
+
 Code should always use the same colorscheme, I use monokai, this is also the fallback colorscheme.
 
 ## System information display
