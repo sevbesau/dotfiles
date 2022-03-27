@@ -10,7 +10,6 @@
     - [ ] documents 
     - [ ] notify on dotfile changes
   - [ ] mount 
-  - [ ] video (binge)
   - [ ] generate
   - [ ] weather
   - [ ] define/dict

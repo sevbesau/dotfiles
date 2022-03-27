@@ -1,3 +1,17 @@
 #!/usr/bin/env sh
 
-notify-send "TODO" "$( basename $0 )"
+ROFI="rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/list.rasi -p"
+
+function menu {
+	# get the available content
+	content=$( ls "$XDG_VIDEOS_DIR" )
+
+	# let the user select what to watch
+	selection=$( echo -e "$content" | $ROFI "watch:" )
+
+	# start playing the selection
+	[ -n "$selection" ] &&	mpv "$XDG_VIDEOS_DIR/$selection" --save-position-on-quit=yes --fullscreen=yes
+}
+
+menu
+
