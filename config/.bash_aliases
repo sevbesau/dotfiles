@@ -51,14 +51,14 @@ alias cloudMAC='00:1e:67:03:ac:4b'
 alias cloudWol='wol 00:1e:67:03:ac:4b'
 
 # alias for nvim
-alias vim='nvim'
+alias vim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 
 # alias for wpa_cli
 alias wpa_cli='wpa_cli -i wlp3s0'
 
 alias urxvt='urxvt -bg [70]$background'
 
-alias npm='pnpm'
+# alias npm='pnpm'
 
 #
 # XDG CLEANUP

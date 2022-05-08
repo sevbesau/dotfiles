@@ -29,6 +29,8 @@ set autoread 				" re-read file when it has been changed outside vim
 set smartcase 			" search is only case sensitive when uppercase and lowercase are mixed
 set noerrorbells 	 	" duck this
 set signcolumn=yes 	" always show this
+" set foldenable			" enable code folding
+" set foldmethod=indent " fold on indentation
 "set cursorline 			" hightlight the line of the cursor
 
 "
@@ -59,7 +61,9 @@ source ~/.config/nvim/telescope.vim
 source ~/.config/nvim/compe.vim
 " rest calls
 source ~/.config/nvim/rest.vim
-
+" close brackets
+" source ~/.config/nvim/brackets.vim
+" source ~/.config/nvim/autoclose.vim
 " tabline
 source ~/.config/nvim/tabline.vim
 

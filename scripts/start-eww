@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+EWW_CONFIG="$XDG_CONFIG_HOME/eww/eww.yuck"
 
 function open {
   eww open "sidebar"
@@ -17,17 +18,17 @@ function close {
 # sets WIDTH and HEIGHT
 eval $(xdotool getdisplaygeometry --shell)
 
-echo hello
- 
+# set the display in the config
+connected_displays=$( xrandr | grep -Eo '[0-9]{2}\.[0-9]{2}\*\+' | wc -l )
+display=$(( connected_displays - 1 ))
+sed -i "s/:monitor [0-9]/:monitor $display/g" "$EWW_CONFIG"
+
 while :; do
   # sets X and Y
   eval $(xdotool getmouselocation --shell)
 
-	echo $X $Y "$(( $HEIGHT / 2))"
- 
   # bottom left
 	if [[ "$X" -lt "2" && "$Y" -gt "$(( $HEIGHT / 2))" && $( pgrep -c minecraft ) -lt 1 ]]; then
-   echo open 
 	 open > /dev/null
 	fi
     

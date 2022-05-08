@@ -8,7 +8,9 @@ scripts/exit						.local/bin/scripts/exit
 scripts/load-workspace	.local/bin/scripts/load-workspace
 scripts/=               .local/bin/scripts/= 
 scripts/loopback        .local/bin/scripts/loopback
+scripts/vim-open				.local/bin/scripts/vim-open
 scripts/cast-app        .local/bin/scripts/cast-app
+scripts/cast-api        .local/bin/scripts/cast-api
 scripts/audioctl        .local/bin/scripts/audioctl
 scripts/autoclicker     .local/bin/scripts/autoclicker
 scripts/battery         .local/bin/scripts/battery
@@ -58,8 +60,14 @@ config/X11                        .config/X11
 config/xob                        .config/xob
 config/mimeapps.list              .config/mimeapps.list
 config/user-dirs.dirs             .config/user-dirs.dirs
+config/user-dirs.locale           .config/user-dirs.locale
 config/xdg_cleanup                .config/xdg_cleanup
 config/youtube-dl.conf            .config/youtube-dl.conf
+config/gtk-2.0										.config/gtk-2.0
+config/gtk-3.0										.config/gtk-3.0
+config/gtkrc											.config/gtkrc
+config/transmission-daemon				.config/transmission-daemon
+
 
 # home root configs
 config/.bash_aliases                      .bash_aliases
@@ -69,6 +77,7 @@ config/.bashrc                            .bashrc
 config/.gitconfig                         .gitconfig
 config/.inputrc                           .inputrc
 config/.xinitrc                           .xinitrc
+config/.icons															.icons
 
 [packages]
 throttled

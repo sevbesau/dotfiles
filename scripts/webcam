@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WEBCAM=/dev/video2
+WEBCAM=/dev/video4
 
 function start_stream {
   SRC="v4l2src device=$WEBCAM"

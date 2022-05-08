@@ -2,6 +2,9 @@
 
 # todo fix urxvt bg
 
+# killall mpDris2 > /dev/null 2>&1
+# mpDris2 &
+
 # recache the colors
 wal -i "$(< "$XDG_CACHE_HOME/wal/wal")" -n --backend colorz > /dev/null 2>&1
 
