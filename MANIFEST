@@ -63,10 +63,10 @@ config/user-dirs.dirs             .config/user-dirs.dirs
 config/user-dirs.locale           .config/user-dirs.locale
 config/xdg_cleanup                .config/xdg_cleanup
 config/youtube-dl.conf            .config/youtube-dl.conf
-config/gtk-2.0										.config/gtk-2.0
-config/gtk-3.0										.config/gtk-3.0
-config/gtkrc											.config/gtkrc
-config/transmission-daemon				.config/transmission-daemon
+config/gtk-2.0    		  .config/gtk-2.0
+config/gtk-3.0                    .config/gtk-3.0
+config/gtkrc                      .config/gtkrc
+config/transmission-daemon        .config/transmission-daemon
 
 
 # home root configs
@@ -77,13 +77,12 @@ config/.bashrc                            .bashrc
 config/.gitconfig                         .gitconfig
 config/.inputrc                           .inputrc
 config/.xinitrc                           .xinitrc
-config/.icons															.icons
+config/.icons                             .icons
 
 [packages]
 throttled
 gstreamer
 ranger
-eid-mw
 maim
 neovim
 firefox

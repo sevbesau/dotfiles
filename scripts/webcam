@@ -1,9 +1,12 @@
 #!/bin/bash
 
-WEBCAM=/dev/video4
+ROFI="rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/list.rasi -p"
+
+WEBCAMS=$( ls /dev/video* )
+
 
 function start_stream {
-  SRC="v4l2src device=$WEBCAM"
+  SRC="v4l2src device=$1"
   FORMATTER="video/x-raw,width=640,height=480,framerate=30/1"
   CONVERTER="videoconvert"
   ENCODER="jpegenc"
@@ -23,14 +26,23 @@ function watch_stream {
 }
 
 function watch_local {
-  SRC="v4l2src device=$WEBCAM"
+  SRC="v4l2src device=$1"
   FORMATTER="video/x-raw,width=640,height=480,framerate=30/1"
   ENCODER="jpegenc"
   DECODER="jpegdec"
   SINK="autovideosink"
-  gst-launch-1.0 -v $SRC ! $FORMATTER ! $ENCODER ! $DECODER ! $SINK &
+  gst-launch-1.0 --gst-fatal-warnings -v $SRC ! $FORMATTER ! $ENCODER ! $DECODER ! $SINK &
 }
+
+function menu {
+	selection=$( echo -e "$WEBCAMS" | $ROFI "webcam" )
+	case "$selection" in 
+		*"video"*) watch_local "$selection" > /dev/null 2&>1 
+	esac
+}
+
+menu
 
 #start_stream 
 #watch_stream 
-watch_local > /dev/null
+#watch_local > /dev/null

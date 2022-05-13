@@ -4,17 +4,15 @@
 
 - [ ] dunst keybinds (dunstctl)
 - [ ] list all required packages
+- [ ] screenshots
 - [ ] extract keybinds from i3 config
 - [ ] scripts
-  - [ ] backup 
+  - [ ] auto backup/sync
     - [ ] documents 
-    - [ ] notify on dotfile changes
   - [ ] mount 
-  - [ ] generate
-  - [ ] weather
+  - [ ] generate -> script, service, etc...
+  - [ ] weather -> script and eww module
   - [ ] define/dict
-- [ ] bugs
-  - [ ] eww weather min and max temp
 
 ## Handy links
 
@@ -76,21 +74,17 @@ Note: this list is not exhaustive, but gives a high level overview of the softwa
 - colorpicker: get hex color from any pixel [aur](https://aur.archlinux.org/packages/colorpicker/)
 - libxft-bgra: libxft replacement to get coloremoji working [aur](https://aur.archlinux.org/packages/libxft-bgra/)
 - mpdris2: mpris support for mpd [aur](https://aur.archlinux.org/packages/mpdris2/)
-- ytdml: youtube-dl, a youtube downloader [aur](https://aur.archlinux.org/packages/ytmdl/)
 - xcursor-breeze: cursor theme [aur](https://aur.archlinux.org/packages/xcursor-breeze/)
 - toilet: ascii text art [aur](https://aur.archlinux.org/packages/toilet/)
-- pulseaudio-modules-bt: more bluetooth audio codecs [aur](https://aur.archlinux.org/packages/pulseaudio-modules-bt/)
 - slock: screen locker [custom build](https://github.com/sevbesau/slock)
-- dmenu: its dmenu! [custom build](https://github.com/sevbesau/dmenu)
 - throttled: makes sure my thinkpad t480 does not throttle
-- eid-mw: eid reader driver (works with t480)
 - maim: make screenshots
-- neovim-nightly
-- firefox: webbrowser
-- thunderbird: mailclient
+- neovim: text editor
+- firefox: web browser
+- thunderbird: mail client
 - mpv: video player
 - mpd: music player
-- mpc: mpd cli
+- mpc: music player cli
 - code: code editor
 - dunst: notification client
 - libnotify: notification server
@@ -121,3 +115,67 @@ Note: this list is not exhaustive, but gives a high level overview of the softwa
 - icons: Papirus
 - cursor: breeze
 
+## Configs
+### Network
+systemd-networkd, systemd-resolved and wpa_supplicant are used to handle networking.
+
+For wired connections, create the following config **/etc/systemd/network/10-ethernet.network**:
+```
+[Match]
+Name=en*
+
+[Network]
+DHCP=yes
+```
+
+
+For wireless connections, create the following config **/etc/systemd/network/10-wireless.network**:
+```
+[Match]
+Name=wl*
+
+[Network]
+DHCP=yes
+```
+
+And also **/etc/wpa_supplicant/wpa_supplicant-<if-name>.conf**
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel
+ap_scan=1
+update_config=1
+country=BE
+```
+
+Finally start and enable the following services
+systemd-networkd, systemd-resolved, wpa_supplicant@<if-name>
+
+### Bluetooth
+TODO installation
+
+udev rule for setting the caps to escape on bt keyboards: **/etc/udev/rules.d/10-bluetooth.rules**
+```
+ACTION=="add", SUBSYSTEM=="hwmon", \
+ATTR{name}=="hid_f1:69:6e:f7:37:77_battery", \
+IMPORT{program}="/usr/bin/xpub", \
+RUN+="/bin/su $env{XUSER} -c 'setxkbmap -option caps:escape'"
+```
+
+to enable bluetooth on startup/wake edit the following line in **/etc/bluetooth/main.conf**
+```
+[Policy]
+AutoEnable=true
+```
+
+### Audio
+#### BEEP
+disable pc speaker
+unload module at runtime: rmmod pcskpr
+disable at boot: create file: **/etc/modprobe.d/nobeep.conf**
+```
+blacklist pcspkr
+```
+
+### pipewire
+
+### keyboard
+caps <-> escape: [create a custom keymap](https://help.ubuntu.com/community/Customi)

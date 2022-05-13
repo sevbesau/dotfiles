@@ -23,7 +23,10 @@ esac
 HISTCONTROL=ignoreboth		# no duplicate lines in the history
 shopt -s histappend			# append, dont overwrite history
 HISTSIZE= HISFILESIZE= 		# infinite history
-export HISTFILE=$XDG_DATA_HOME/bash/bash_history
+HIST_PATH="$XDG_DATA_HOME/bash_history"
+[ -f "$HIST_PATH" ] || touch "$HIST_PATH"
+export HISTFILE="$HIST_PATH"
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -79,6 +82,9 @@ stty -ixon
 
 # change directory by just typing the path without 'cd'
 shopt -s autocd
+
+# load nvm
+source /usr/share/nvm/init-nvm.sh
 
 # expanding the path
 export PATH="$PATH:$HOME/.local/bin/scripts"

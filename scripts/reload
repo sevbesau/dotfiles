@@ -27,7 +27,7 @@ python3 -m pywalfox update > /dev/null
 start-xob > /dev/null
 
 # rebuild slock
-pushd $HOME/aur/slock > /dev/null
+pushd $HOME/repos/slock > /dev/null
   sudo make clean install > /dev/null
 popd > /dev/null
 

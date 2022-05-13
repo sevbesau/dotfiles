@@ -108,43 +108,43 @@
 
 
 (defwindow time
-  :monitor 1
+  :monitor 0
   :geometry (geometry :x "0%" :y "8%" :width "30%" :height "0%")
   (time)
 )
 
 (defwindow date
-  :monitor 1
+  :monitor 0
   :geometry (geometry :x "0%" :y "20%" :width "30%" :height "0%")
   (date)
 )
 
 (defwindow weather
-  :monitor 1
+  :monitor 0
   :geometry (geometry :x "0%" :y "32%" :width "30%" :height "0%")
   (weather)
 )
 
 (defwindow wireless
-  :monitor 1
+  :monitor 0
   :geometry (geometry :x "0%" :y "2%" :width "30%" :height "0%" :anchor "center left")
   (wireless)
 )
 
 (defwindow stats
-  :monitor 1
+  :monitor 0
   :geometry (geometry :x "0%" :y "14%" :width "30%" :height "0%" :anchor "center left")
   (stats)
 )
 
 (defwindow mpd
-  :monitor 1
+  :monitor 0
   :geometry (geometry :x "0%" :y "-5%" :width "30%" :height "0%" :anchor "bottom left")
   (mpd)
 )
 
 (defwindow sidebar
-  :monitor 1
+  :monitor 0
   :geometry (geometry :x "0px" :y "0px" :width "30%" :height "100%")
   (sidebar)
 )
