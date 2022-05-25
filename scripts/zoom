@@ -6,18 +6,22 @@ use warnings;
 my $font1 = "monospace";
 my $font2 = "JoyPixels";
 my $font3 = "Noto Color Emoji";
-my $level = 1;
+my $base_size = 14;
+
+my $size = $base_size;
 
 sub on_user_command
 {
 	my ($self, $cmd) = @_;
 
 	if ($cmd eq "zoom:in") {
-		$level++;
+		$size++;
 	} elsif ($cmd eq "zoom:out") {
-		$level-- if $level gt 1;
+		$size-- if $size gt 1;
+	} elsif ($cmd eq "zoom:eq") {
+		$size = $base_size;
 	}
 
-	my $size = $level * 12;
-	$self->cmd_parse("\033]50;xft:${font1}:pixelsize=${size},xft:${font2}:pixelsize=${size},xft:${font3}:pixelsize=${size}\007");
+	# my $size = $level * $base_size;
+	$self->cmd_parse("\033]50;xft:${font1}:size=${size},xft:${font2}:size=${size},xft:${font3}:size=${size}\007");
 }

@@ -1,5 +1,5 @@
 !
-! __  __   _       __             _ _       
+/* ! __  __   _       __             _ _ */       
 ! \ \/ /__| | ___ / _| __ _ _   _| | |_ ___ 
 !  \  // _` |/ _ \ |_ / _` | | | | | __/ __|
 !  /  \ (_| |  __/  _| (_| | |_| | | |_\__ \
@@ -71,6 +71,7 @@ URxvt.scrollBar:	false
 URxvt.perl-ext: zoom
 URxvt.keysym.C-equal: perl:zoom:in
 URxvt.keysym.C-minus: perl:zoom:out
+URxvt.keysym.C-plus: perl:zoom:eq
 
 !xft:Hack:size=14, xft:Material Icons:size=14, xft:Symbola:size=14, xft:Font Awesome:size=14, xft:Fira Code:size=14, xft:Unifont:size=14
 Xcursor.size: 24
