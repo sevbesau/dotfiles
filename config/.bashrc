@@ -9,9 +9,9 @@
 [[ -f "$XDG_CONFIG_HOME/xdg_cleanup" ]] && . "$XDG_CONFIG_HOME/xdg_cleanup"
 
 # load pywal generated colors
-# . "$HOME/.cache/wal/colors.sh"
-# (cat ~/.cache/wal/sequences &)
-# source ~/.cache/wal/colors-tty.sh
+. "$HOME/.cache/wal/colors.sh"
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
 
 # If not running interactively, don't do anything
 case $- in
