@@ -65,7 +65,7 @@ config/user-dirs.dirs             .config/user-dirs.dirs
 config/user-dirs.locale           .config/user-dirs.locale
 config/xdg_cleanup                .config/xdg_cleanup
 config/youtube-dl.conf            .config/youtube-dl.conf
-config/gtk-2.0    		  .config/gtk-2.0
+config/gtk-2.0										.config/gtk-2.0
 config/gtk-3.0                    .config/gtk-3.0
 config/gtkrc                      .config/gtkrc
 config/transmission-daemon        .config/transmission-daemon
@@ -75,6 +75,7 @@ config/transmission-daemon        .config/transmission-daemon
 config/.bash_aliases                      .bash_aliases
 config/.bash_logout                       .bash_logout
 config/.bash_profile                      .bash_profile
+config/.bash_prompt                       .bash_prompt
 config/.bashrc                            .bashrc
 config/.gitconfig                         .gitconfig
 config/.inputrc                           .inputrc

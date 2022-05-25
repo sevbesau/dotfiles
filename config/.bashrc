@@ -9,9 +9,9 @@
 [[ -f "$XDG_CONFIG_HOME/xdg_cleanup" ]] && . "$XDG_CONFIG_HOME/xdg_cleanup"
 
 # load pywal generated colors
-. "$HOME/.cache/wal/colors.sh"
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
+# . "$HOME/.cache/wal/colors.sh"
+# (cat ~/.cache/wal/sequences &)
+# source ~/.cache/wal/colors-tty.sh
 
 # If not running interactively, don't do anything
 case $- in
@@ -42,9 +42,6 @@ shopt -s globstar
 # vi mode in bash
 set -o vi
 
-# setting the prompt
-PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
-
 # enable color support
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -61,6 +58,11 @@ fi
 # Alias definitions in a separate file.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# Prompt definition in a separate file.
+if [ -f ~/.bash_prompt ]; then
+    . ~/.bash_prompt
 fi
 
 # Make aliases work for sudo
