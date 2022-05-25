@@ -31,7 +31,7 @@ function GIT {
   GIT_PS1_SHOWDIRTYSTATE="1"
   GIT_PS1_SHOWSTASHSTATE=
 	GIT_PS1_SHOWSUNTRACKEDFILES=
-	GIT_PS1_SHOWUPSTREAM=
+	GIT_PS1_SHOWUPSTREAM="auto"
 	GIT_PS1_STATESEPARATOR=" "
 	git status 2>&1 > /dev/null && echo -e "\e[31m$O\e[41m\e[30m$( __git_ps1 | sed 's/[()]//g' )\e[0m\e[31m$C\e[0m"
 }
