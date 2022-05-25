@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $font1 = "monospace";
+my $font2 = "JoyPixels";
+my $font3 = "Noto Color Emoji";
+my $level = 1;
+
+sub on_user_command
+{
+	my ($self, $cmd) = @_;
+
+	if ($cmd eq "zoom:in") {
+		$level++;
+	} elsif ($cmd eq "zoom:out") {
+		$level-- if $level gt 1;
+	}
+
+	my $size = $level * 12;
+	$self->cmd_parse("\033]50;xft:${font1}:pixelsize=${size},xft:${font2}:pixelsize=${size},xft:${font3}:pixelsize=${size}\007");
+}

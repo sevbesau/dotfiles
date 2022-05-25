@@ -36,6 +36,8 @@ scripts/wallpaper       .local/bin/scripts/wallpaper
 scripts/weather         .local/bin/scripts/weather
 scripts/webcam          .local/bin/scripts/webcam
 scripts/wifi            .local/bin/scripts/wifi
+scripts/zoom            .local/bin/scripts/zoom
+scripts/git-prompt      .local/bin/scripts/git-prompt
 
 # application data
 data/applications          .local/share/applications
