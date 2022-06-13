@@ -65,7 +65,7 @@ URxvt.background: [70]#000000
 
 URxvt*intensityStyles:	true
 URxvt*depth:		32
-*font:xft:monospace:size=14, xft:JoyPixels:size=14, xft:Noto Color Emoji:size=14
+*font:xft:monospace:size=14, xft:JoyPixels:size=14, xft:Noto Color Emoji:size=14, xft:Braille:size=14
 
 URxvt.scrollBar:	false
 URxvt.perl-ext: zoom
