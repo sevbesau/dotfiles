@@ -22,8 +22,6 @@ for_window [class="Sxiv"] floating enable
 for_window [class="dmenu"] floating enable
 for_window [title="Android Emulator"] floating enable
 
-# no borders
-for_window [class="[.]*"] border none
 
 
 ###---Basic Defenitions---###
@@ -31,10 +29,14 @@ for_window [class="[.]*"] border none
 # gaps setup
 gaps inner 2
 gaps outer 8
+# only show gaps with multiple windows
+smart_gaps on 
 
 # hide all borders
 hide_edge_borders both
-new_window 1pixel
+# no borders
+for_window [class="[.]*"] border none
+# new_window 1pixel
 default_border none
 
 # other defenitions
