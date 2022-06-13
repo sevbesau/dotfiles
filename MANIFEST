@@ -38,6 +38,7 @@ scripts/webcam          .local/bin/scripts/webcam
 scripts/wifi            .local/bin/scripts/wifi
 scripts/zoom            .local/bin/scripts/zoom
 scripts/git-prompt      .local/bin/scripts/git-prompt
+scripts/vault           .local/bin/scripts/vault
 
 # application data
 data/applications          .local/share/applications

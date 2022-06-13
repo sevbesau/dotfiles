@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+
+home="/home/$(logname)"
+VAULT_PATH="$home/.local/share/vault.img"
+VAULT_MOUNT_PATH="$home/vault"
+
+function init {
+	[ -f "$VAULT_PATH" ] && echo "Vault already exists!" && exit 1
+	[ -d "$VAULT_MOUNT_PATH" ] || mkdir "$VAULT_MOUNT_PATH"
+	dd if=/dev/urandom of="$VAULT_PATH" bs=1M count=1024 status=progress
+	cryptsetup --verify-passphrase luksFormat "$VAULT_PATH"
+	cryptsetup open --type luks "$VAULT_PATH" vault
+	mkfs.ext4 -L vault /dev/mapper/vault
+	cryptsetup close vault
+}
+
+function open {
+	cryptsetup open --type luks "$VAULT_PATH" vault
+	mount /dev/mapper/vault "$VAULT_MOUNT_PATH"
+}
+
+function close {
+	umount	"$VAULT_MOUNT_PATH"
+	cryptsetup close vault
+}
+
+case "$1" in
+	"open") open ;;
+	"close") close ;;
+	"init") init ;;
+	*) echo -e "Unsupported verb: '$1'\nSupported verbs are [open, close, init]" ;;
+esac
