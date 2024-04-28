@@ -1,0 +1,9 @@
+[user]
+	email = seppe@siliconminds.be
+	name = sevbesau
+	editor = nvim
+[core]
+	editor = nvim
+[init]
+	defaultBrach = main
+	defaultBranch = main
