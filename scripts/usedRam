@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-
-state=$( free | tr -s " " | grep -i "mem" )
-total=$( echo "$state" | cut -d " " -f 2)
-used=$( echo "$state" | cut -d " " -f 3)
-
-echo $( echo "($used / $total) * 100" | bc -l | cut -d . -f 1 )
