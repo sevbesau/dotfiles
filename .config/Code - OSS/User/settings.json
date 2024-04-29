@@ -1,6 +1,20 @@
 {
-    "workbench.colorTheme": "Monokai",
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    }
+  "keyboard.dispatch": "keyCode",
+  "terminal.external.linuxExec": "kitty",
+  "window.zoomLevel": 2,
+  "window.menuBarVisibility": "hidden",
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.colorTheme": "Monokai",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "files.autoSave": "onFocusChange",
+  "npm.enableRunFromFolder": true,
+  "debug.javascript.autoAttachFilter": "always",
+  "telemetry.telemetryLevel": "off",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
