@@ -1,3 +1,17 @@
+# git directory of repo
 dotfiles.git
+
+# data
 .local/state
 .cache
+.pki
+.mozilla
+repos
+downloads
+desktop
+.config/Code\ -\ OSS/
+.vscode-oss
+
+# secrets
+.ssh
+
