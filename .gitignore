@@ -1,1 +1,3 @@
-
+dotfiles.git
+.local/state
+.cache
