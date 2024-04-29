@@ -8,6 +8,8 @@
 # set our prompt
 [ -f $HOME/.bash_prompt ] && source $HOME/.bash_prompt
 
+source /usr/share/bash-completion/completions/git
+
 # load aliases
 [ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 

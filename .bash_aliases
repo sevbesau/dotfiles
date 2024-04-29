@@ -5,4 +5,5 @@ alias sudo='sudo '
 alias vim="nvim"
 
 alias dotfiles="git --work-tree=$HOME --git-dir=$HOME/.local/share/dotfiles.git"
+__git_complete dotfiles __git_main
 
