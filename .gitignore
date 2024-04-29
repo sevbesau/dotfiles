@@ -11,6 +11,14 @@ downloads
 desktop
 .config/Code\ -\ OSS/
 .vscode-oss
+*bash_history
+.local/share/Trash
+*.log
+1Password
+*1password*
+.gnupg
+.config/pulse/cookie
+.local/share/recently-used.xbel
 
 # secrets
 .ssh
