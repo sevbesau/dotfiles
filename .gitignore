@@ -19,6 +19,9 @@ desktop
 .gnupg
 .config/pulse/cookie
 .local/share/recently-used.xbel
+.local/share/gvfs-metadata
+.local/share/PrismLauncher
+.config/pavucontrol.ini
 
 # secrets
 .ssh
