@@ -6,23 +6,27 @@ dotfiles.git
 .cache
 .pki
 .mozilla
+.vscode-oss
+.gnupg
+
 repos
 downloads
 desktop
-.config/Code\ -\ OSS/
-.vscode-oss
-*bash_history
-.local/share/Trash
-*.log
 1Password
+
 *1password*
-.gnupg
-.config/pulse/cookie
+*bash_history
+*.log
+
+.local/share/Trash
 .local/share/recently-used.xbel
 .local/share/gvfs-metadata
 .local/share/PrismLauncher
+
+.config/Code\ -\ OSS/
+.config/pulse/cookie
 .config/pavucontrol.ini
+.config/dconf/user
 
 # secrets
 .ssh
-
