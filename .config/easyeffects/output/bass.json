@@ -1,0 +1,28 @@
+{
+    "output": {
+        "bass_enhancer#0": {
+            "amount": 2.0000000000000004,
+            "blend": 0.0,
+            "bypass": true,
+            "floor": 20.0,
+            "floor-active": false,
+            "harmonics": 8.5,
+            "input-gain": 0.0,
+            "output-gain": 0.0,
+            "scope": 100.0
+        },
+        "bass_loudness#0": {
+            "bypass": false,
+            "input-gain": 0.0,
+            "link": -9.1,
+            "loudness": -3.1,
+            "output": -6.0,
+            "output-gain": 0.0
+        },
+        "blocklist": [],
+        "plugins_order": [
+            "bass_enhancer#0",
+            "bass_loudness#0"
+        ]
+    }
+}
