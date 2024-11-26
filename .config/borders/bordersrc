@@ -1,0 +1,16 @@
+#!/bin/bash
+
+case $1 in
+  'resize') ACTIVE_COLOR="0xffe87d3e" ;; # orange
+  *) ACTIVE_COLOR="0xff6c99bb" ;; # green
+esac
+
+options=(
+	style=round
+	width=4.0
+	hidpi=on
+	active_color=$ACTIVE_COLOR
+	inactive_color=0xff414550
+)
+
+borders "${options[@]}"

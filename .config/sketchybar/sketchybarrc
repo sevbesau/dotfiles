@@ -1,0 +1,75 @@
+#!/bin/sh
+
+# TODO
+# - add memmory usage
+# - add network status
+# - add bt status
+# - add do not disturb
+# - improve colors
+
+source "$CONFIG_DIR/colors.sh"
+
+HOOKS="$CONFIG_DIR/hooks"
+COMPONENTS="$CONFIG_DIR/components"
+
+sketchybar --bar \
+  position=top \
+  height=37 \
+  blur_radius=30 \
+  color=$BAR_COLOR \
+  padding_left=8 \
+  padding_right=8
+
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+default=(
+  background.color=$BAR_COLOR
+  background.corner_radius=5
+  background.height=24
+  background.border_color=$ITEM_BG_COLOR
+  background.border_width=0
+  padding_left=2
+  padding_right=2
+  icon.font="SF Pro:Semibold:15.0"
+  label.font="SF Pro:Semibold:15.0"
+  icon.color=$TEXT_COLOR
+  label.color=$TEXT_COLOR
+  icon.padding_left=6
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=6
+)
+sketchybar --default "${default[@]}"
+
+##### Left side items #####
+
+source "$COMPONENTS/spaces.sh"
+source "$COMPONENTS/separator.sh"
+source "$COMPONENTS/front_app.sh"
+
+##### Left side of notch items #####
+
+
+##### Right side of notch items #####
+source $COMPONENTS/media.sh
+
+##### Right side items #####
+
+source "$COMPONENTS/calendar.sh"
+source "$COMPONENTS/battery.sh"
+source "$COMPONENTS/volume.sh"
+source "$COMPONENTS/network.sh"
+source "$COMPONENTS/cpu.sh"
+
+
+# ##### Adding Mission Control Space Indicators #####
+# # Let's add some mission control spaces:
+# # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+# # to indicate active and available mission control spaces.
+
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
