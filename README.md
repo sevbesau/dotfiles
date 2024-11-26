@@ -27,7 +27,7 @@ git clone --bare https://github.com/sevbesau/dotfiles.git $HOME/.dotfiles
 After this we can checkout the content from our dotfiles repo
 
 ```sh
-dotfiles checkout
+dotfiles checkout mac
 ```
 
 **Note: This can fail if we are going to overwrite existing files.**
@@ -42,7 +42,7 @@ xargs -I{} mv {} .config-backup/{}
 Then rerun the checkout:
 
 ```sh
-dofiles checkout
+dotfiles checkout mac
 ```
 
 Make sure to set the flag showUntrackedFiles to no to unclutter the status.
