@@ -11,6 +11,9 @@ pyenv init - | source
 # set TERM var for ssh sessions
 set TERM xterm-256color
 
+# quick and dirty http server in the current directory
+alias serve="npx http-server ."
+
 # set alias for vim, muscle memmory...
 alias vim="nvim"
 
@@ -101,3 +104,26 @@ end
 
 set -gx NVM_DIR (brew --prefix nvm)
 
+function !! --description "Repeat the last command"
+    history --max=1 | read -l cmd; eval $cmd
+end
+
+function sudo --description "Run commands as root, supporting 'sudo !!'"
+    # Check if the second argument is '!!'
+    if test (count $argv) -eq 1 -a "$argv[1]" = "!!"
+        # Retrieve the last command from history
+        set -l last_command (history --max=1)
+
+        # If no history, notify and exit
+        if test -z "$last_command"
+            echo "No previous command found in history."
+            return 1
+        end
+
+        # Run the last command with sudo
+        eval command sudo $last_command
+    else
+        # Default behavior for other sudo calls
+        command sudo $argv
+    end
+end
