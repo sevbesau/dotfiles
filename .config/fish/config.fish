@@ -2,6 +2,7 @@
 fish_add_path /opt/homebrew/bin
 fish_add_path ~/.meteor
 fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+fish_add_path ~/.local/bin
 
 # pyenv
 set -Ux PYENV_ROOT $HOME/.pyenv
@@ -22,6 +23,9 @@ alias cat="bat"
 
 # alias for dotfiles repo
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+
+# alias for lsd
+alias ls="lsd -l"
 
 # set vi mode
 fish_vi_key_bindings
@@ -127,3 +131,20 @@ function sudo --description "Run commands as root, supporting 'sudo !!'"
         command sudo $argv
     end
 end
+
+function envsource
+    for line in (cat .env -p | grep -v '^#' | sed '/^[[:space:]]*$/d' | sed 's/="/=/' | sed 's/"$//')
+        set item (string split -m 1 '=' $line)
+        set -gx $item[1] $item[2]
+        echo "Exported key $item[1]"
+    end
+end
+
+function lscripts
+    [ -f composer.json ] && echo 'composer.json scripts:' && cat composer.json | jq '.scripts';
+    [ -f package.json ] && echo -e '\npackage.json scripts:' && cat package.json | jq '.scripts';
+end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
